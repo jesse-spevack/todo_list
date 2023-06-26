@@ -15,3 +15,12 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+# Database configuration
+config :todo_list, TodoList.Repo,
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_NAME"),
+  hostname: System.get_env("DB_HOSTNAME"),
+  port: String.to_integer(System.get_env("DB_PORT")),
+  pool_size: String.to_integer(System.get_env("DB_POOL_SIZE"))
